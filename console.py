@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-name ='John.M'
+name = 'John.M'
 print(name)
