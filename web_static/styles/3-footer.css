@@ -7,5 +7,10 @@ footer {
 	display : flex;
 	position : fixed;
 	line-height : 60px;
+<<<<<<< HEAD
 	justify-content : center;
+=======
+	justify-content: center;
+	border-top: 1px solid #CCCCCC;
+>>>>>>> 524cabc9ffad424a9b1a8e2b44e8345f8722cd09
 }
