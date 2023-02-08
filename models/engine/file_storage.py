@@ -30,3 +30,7 @@ class FileStorage:
         if path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding='utf-8') as j:
                 self.__objects = json.load(j)
+                items = self.__objects
+                for item in items.values():
+                    name_of_class = itesm['__class__']
+                    self.new(eval(name_of_class + "(** "+ str(items) + ")"))
