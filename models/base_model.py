@@ -15,7 +15,7 @@ class BaseModel:
                     setattr(self, k, v)
                     continue
                 if k!= '__class__':
-                    setattr(self,k,v)
+                    setattr(self, k, v)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
