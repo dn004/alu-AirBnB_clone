@@ -2,42 +2,40 @@
 
 import uuid
 from datetime import datetime
-from models import storage
+from models 
 
-""" defining all common attributes/methods for other classes """
-
-
+#defining all common attributes for other classes 
 class BaseModel:
-    
-    """initialize class"""
+    #initialize
     def __init__(self, *args, **kwargs):
         if kwargs:
-            for key, v in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    value = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
-                    setattr(self, key, value)
+            for k, v in kwargs.items():
+                if k == 'created_at' or k == 'updated_at':
+                    v = datetime.fromisofrmat(v)
+                    setattr(self, k, v)
                     continue
+                if k!= '__class__':
+                    setattr(self,k,v)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
             storage.new(self)
 
     def __str__(self):
-        """ represent
-        as string"""
+
+        
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
     
     def save(self):
-        """update to current time"""
+    
         self.updated_at = datetime.now()
-        storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
-        """return dictionary
-        with all values """
-        the_dict = self.__dict__.copy()
-        the_dict['__class__'] = self.__class__.__name__
-        the_dict['self.created_at'] = self.created_at.isoformat()
-        the_dict['self.updated_at'] = self.updated_at.isoformat()
-        return the_dict
+        #return dict
+        new_dict = self.__dict__.copy()
+        new_dict['__class__'] = self.__class__.__name__
+        new_dict['updated_at'] = new_dict['update_at'].isoformat()
+        new_dict['created_at'] = new_dict['created_at'].isoformat()
+        return new_dict
