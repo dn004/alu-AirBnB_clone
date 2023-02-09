@@ -43,7 +43,7 @@ article{
 	display: flex;
 	align-self: flex-end;
 	justify-content: center;
-	position: absolute;
+	position: static;
 	padding: 5px;
 	border-radius: 100%;
 	line-height: 60px;
