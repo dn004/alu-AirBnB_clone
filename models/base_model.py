@@ -11,7 +11,7 @@ class BaseModel:
         if kwargs:
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
-                    v = datetime.fromisofrmat(v)
+                    v = datetime.fromisoformat(v)
                     setattr(self, k, v)
                     continue
                 if k!= '__class__':
