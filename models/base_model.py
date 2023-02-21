@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-from models 
+from models import models, storage
 
 #defining all common attributes for other classes 
 class BaseModel:
