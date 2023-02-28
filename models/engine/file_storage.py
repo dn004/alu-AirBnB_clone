@@ -41,6 +41,3 @@ class FileStorage:
                     for item in items.values():
                         name_of_class = itesm['__class__']
                         self.new(eval(name_of_class + "(** "+ str(items) + ")"))
-
-        except FileNotFoundError:
-            pass
