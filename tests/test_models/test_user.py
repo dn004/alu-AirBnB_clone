@@ -11,6 +11,10 @@ from contextlib import redirect_stdout
 
 
 class TestUser(unittest.TestCase):
+    def test_class(self):
+        """creating object and testing class user"""
+        user = User()
+        self.assertEqual(user.__class__.__name__, "User")
     
     def setUp(self):
         self.user = User()
