@@ -2,40 +2,31 @@
 
 import uuid
 from datetime import datetime
-from models import models, storage
 
-#defining all common attributes for other classes 
+
 class BaseModel:
-    #initialize
-    def __init__(self, *args, **kwargs):
+    """BaseClass that define al common Attributes/methods for other classes"""
+
+    def __init__(self, **kwargs):
         if kwargs:
-            for k, v in kwargs.items():
-                if k == 'created_at' or k == 'updated_at':
-                    v = datetime.fromisoformat(str(v))
-                    setattr(self, k, v)
-                    continue
-                if k!= '__class__':
-                    setattr(self, k, v)
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.utcnow()
-            self.updated_at = datetime.utcnow()
-            storage.new(self)
+            for key, value in kwargs.items():
+                key = value
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """a method to implement object"""
+        return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
 
-        
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
-    
     def save(self):
-    
-        self.updated_at = datetime.now()
-        models.storage.save()
+        """instance method to update time """
+        self.updated_at = datetime.utcnow()
 
     def to_dict(self):
-        #return dict
-        new_dict = self.__dict__.copy()
-        new_dict['__class__'] = self.__class__.__name__
-        new_dict['updated_at'] = new_dict['update_at'].isoformat()
-        new_dict['created_at'] = new_dict['created_at'].isoformat()
-        return new_dict
+        """instance method to return dictionary containing all keys/values"""
+        the_dict = self.__dict__.copy()
+        the_dict['__class__'] = self.__class__.__name__
+        the_dict['self.created_at'] = self.created_at.isoformat()
+        the_dict['self.updated_at'] = self.updated_at.isoformat()
+        return the_dict
