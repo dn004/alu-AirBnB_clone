@@ -8,10 +8,13 @@ from time import sleep
 class BaseModel:
     """BaseClass that define al common Attributes/methods for other classes"""
 
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
-                key = value
+                if key == '__class__':
+                    continue
+                else:
+                    key = value
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
@@ -22,7 +25,7 @@ class BaseModel:
 
     def save(self):
         """instance method to update time """
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.utcnow()
 
     def to_dict(self):
         """instance method to return dictionary containing all keys/values"""
@@ -31,3 +34,4 @@ class BaseModel:
         the_dict['created_at'] = str(self.created_at.isoformat())
         the_dict['updated_at'] = str(self.updated_at.isoformat())
         return the_dict
+
