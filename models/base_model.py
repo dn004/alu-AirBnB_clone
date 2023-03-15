@@ -9,15 +9,9 @@ class BaseModel:
     """BaseClass that define al common Attributes/methods for other classes"""
 
     def __init__(self, *args, **kwargs):
-        if kwargs:
-            for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
-                else:
-                    key = value
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+        self.id = kwargs.get('id', str(uuid.uuid4()))
+        self.updated_at = kwargs.get('updated_at', datetime.utcnow())
+        self.created_at = kwargs.get('create_at', datetime.utcnow())
 
     def __str__(self) -> str:
         """a method to implement object"""
@@ -34,4 +28,3 @@ class BaseModel:
         the_dict['created_at'] = str(self.created_at.isoformat())
         the_dict['updated_at'] = str(self.updated_at.isoformat())
         return the_dict
-
