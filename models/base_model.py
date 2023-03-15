@@ -22,6 +22,7 @@ class BaseModel:
     def save(self):
         """instance method to update time """
         self.updated_at = datetime.utcnow()
+        return updated_at
 
     def to_dict(self):
         """instance method to return dictionary containing all keys/values"""
