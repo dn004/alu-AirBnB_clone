@@ -4,7 +4,7 @@ from datetime import datetime
 
 from time import sleep
 
-from models.base_model import BaseModel
+from base_model import BaseModel
 
 
 class TestCaseBaseModel(unittest.TestCase):
@@ -21,10 +21,11 @@ class TestCaseBaseModel(unittest.TestCase):
         print(my_model_json)
         print("JSON of my_model:")
         for key in my_model_json.keys():
-            print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
+            print("\t{}: ({}) - {}".format(key,
+                  type(my_model_json[key]), my_model_json[key]))
 
     def test_to_dict(self):
-        self.assertEqual(type(self.my_model.to_dict()), dict)
+        print(self.assertEqual(type(self.my_model.to_dict()), dict))
 
     def test_save(self):
         self.assertEqual(type(self.my_model.to_dict()['updated_at']),
@@ -32,3 +33,7 @@ class TestCaseBaseModel(unittest.TestCase):
 
     def test__str__(self):
         self.assertEqual(type(self.my_model.to_dict()['__class__']), str)
+
+
+if __name__ == '__main__':
+    unittest.main()
