@@ -21,7 +21,7 @@ class BaseModel:
 
     def save(self):
         """instance method to update time """
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now()
         models.storage.save()
 
 
@@ -30,5 +30,5 @@ class BaseModel:
         the_dict = self.__dict__.copy()
         the_dict['__class__'] = self.__class__.__name__
         the_dict['created_at'] = str(self.created_at.isoformat())
-        the_dict['updated_at'] = self.updated_at.isoformat()
+        the_dict['updated_at'] = str(self.updated_at.isoformat())
         return the_dict
