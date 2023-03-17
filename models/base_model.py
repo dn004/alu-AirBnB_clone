@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-from time import sleep
+import models
 
 
 class BaseModel:
@@ -12,6 +12,8 @@ class BaseModel:
         self.id = kwargs.get('id', str(uuid.uuid4()))
         self.updated_at = kwargs.get('updated_at', datetime.utcnow())
         self.created_at = kwargs.get('create_at', datetime.utcnow())
+         models.storage.new(self)
+
 
     def __str__(self) -> str:
         """a method to implement object"""
@@ -20,6 +22,8 @@ class BaseModel:
     def save(self):
         """instance method to update time """
         self.updated_at = datetime.utcnow()
+         models.storage.save()
+
 
     def to_dict(self):
         """instance method to return dictionary containing all keys/values"""
