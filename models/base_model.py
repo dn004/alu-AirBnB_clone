@@ -14,7 +14,6 @@ class BaseModel:
         self.created_at = kwargs.get('create_at', datetime.utcnow())
         models.storage.new(self)
 
-
     def __str__(self) -> str:
         """a method to implement object"""
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
@@ -23,7 +22,6 @@ class BaseModel:
         """instance method to update time """
         self.updated_at = datetime.now()
         models.storage.save()
-
 
     def to_dict(self):
         """instance method to return dictionary containing all keys/values"""
