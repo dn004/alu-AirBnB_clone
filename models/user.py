@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
-#model
+# model
 from models.base_model import BaseModel
 
-#A class with 4 attributes
+# A class with 4 attributes
+
 
 class User(BaseModel):
     email = ""
