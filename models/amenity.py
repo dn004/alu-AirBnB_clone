@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-
-
-#Model
+# Model
 from models.base_model import BaseModel
+# class with attribute "name"
 
-#class with attribute "name"
 
 class Amenity(BaseModel):
     name = ""
