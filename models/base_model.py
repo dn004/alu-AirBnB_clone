@@ -15,17 +15,17 @@ class BaseModel:
         models.storage.new(self)
 
 
-    def __str__(self) -> str:
+   def __str__(self) -> str:
         """a method to implement object"""
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
 
-    def save(self):
+   def save(self):
         """instance method to update time """
         self.updated_at = datetime.now()
         models.storage.save()
 
 
-    def to_dict(self):
+   def to_dict(self):
         """instance method to return dictionary containing all keys/values"""
         the_dict = self.__dict__.copy()
         the_dict['__class__'] = self.__class__.__name__
