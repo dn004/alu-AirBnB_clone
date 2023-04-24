@@ -2,12 +2,15 @@
 """Defines FileStorage class."""
 import pickle
 
+
 class FileStorage:
     """A class that serializes instances to a JSON file
     and deserializes JSON file to instances"""
 
-    __file_path = "file.json" # path to the JSON file
-    __objects = {} # dictionary that will store all objects by <class name>.id
+    __file_path = "file.json"
+    # path to the JSON file
+    __objects = {}
+    # dictionary that will store all objects by <class name>.id
 
     def all(self):
         """Returns the dictionary __objects"""
@@ -24,7 +27,8 @@ class FileStorage:
             pickle.dump(self.__objects, f)
 
     def reload(self):
-        """Deserializes the JSON file to __objects (only if the JSON file (__file_path) exists;
+        """Deserializes the JSON file to __objects
+        (only if the JSON file (__file_path) exists;
         otherwise, do nothing. If the file doesn’t exist,
         no exception should be raised)"""
         try:
