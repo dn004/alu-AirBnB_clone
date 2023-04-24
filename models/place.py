@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
-#model
+# model
 from models.base_model import BaseModel
-
 # class with multiple attributes
+
+
 class Place(BaseModel):
     city_id = ""
     user_id = ""
