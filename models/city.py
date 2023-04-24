@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-
-#module
+# module
 from models.base_model import BaseModel
+# class with 2 attributes
 
-# class with 2 attributes 
 
 class City(BaseModel):
-    name= ""
+    name = ""
     state_id = ""
