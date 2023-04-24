@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import cmd
 import argparse
-import models  
+import models
 # assuming you have a models module
 that defines BaseModel and handles JSON file
 
@@ -13,12 +13,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
-        return True  
+        return True
     # returns True to stop cmdloop()
 
     def do_EOF(self, arg):
         """EOF command to exit the program"""
-        return True  
+        return True
     # returns True to stop cmdloop()
 
     def emptyline(self):
@@ -26,9 +26,9 @@ class HBNBCommand(cmd.Cmd):
         pass   # does nothing
 
     def do_create(self, arg):
-        """Creates a new instance of BaseModel, 
+        """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
-        parser = argparse.ArgumentParser() 
+        parser = argparse.ArgumentParser()
         # create an ArgumentParser object
         parser.add_argument('class_name', type=str)
         # add an argument for class name
@@ -47,7 +47,8 @@ class HBNBCommand(cmd.Cmd):
             # print error message if class name doesn't exist
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an
+        instance based on the class name and id"""
         parser = argparse.ArgumentParser()
         # create an ArgumentParser object
         parser.add_argument('class_name', type=str)
